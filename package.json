@@ -20,7 +20,7 @@
     "url": "https://github.com/super-gr0ver/frontend-project-46/issues"
   },
   "homepage": "https://github.com/super-gr0ver/frontend-project-46#readme",
-  "devDependencies": {
+  "dependencies": {
     "commander": "^10.0.0"
   }
 }
