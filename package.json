@@ -1,6 +1,9 @@
 {
   "name": "@hexlet/code",
   "type": "module",
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/super-gr0ver/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/super-gr0ver/frontend-project-46/actions)",
   "main": "index.js",
