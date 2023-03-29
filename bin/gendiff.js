@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-import { Command } from "../node_modules/commander/esm.mjs";
+import { program } from "../node_modules/commander/esm.mjs";
 // import genDiff from '../src/index.js';
 
-const program = new Command();
+// const program = new Command();
 
 program
   .version('0.1.0')
