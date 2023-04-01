@@ -23,9 +23,10 @@ program
     const result = []
     for (const [key, value] of arrFile1) {
       // if (_.includes(arrFile2, 'host')) {
-      if (_.includes(objFile2, key)) {
+      if (_.has(objFile2, key)) {
         result.push(value);
       }
+      console.log(value)
     }
 
     return console.log(result)
