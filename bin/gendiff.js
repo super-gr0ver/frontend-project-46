@@ -18,18 +18,20 @@ program
 
     const arrFile1 = Object.entries(objFile1);
     const arrFile2 = Object.entries(objFile2);
-    //console.log(arrFile2[0])
+    //console.log(objFile1)
 
     const result = []
     for (const [key, value] of arrFile1) {
       // if (_.includes(arrFile2, 'host')) {
-      if (_.has(objFile2, key)) {
-        result.push(value);
+      
+      if (_.has(objFile2, key) && objFile2[key] === value) {
+        result.push(`  ${key}: ${value}`);
       }
-      console.log(value)
+      result.push(`- ${key}: ${value}`);
     }
 
-    return console.log(result)
+    return console.log(`{\n${result.join('\n')}\n}`)
+    
     // console.log(genDiff(filepath1, filepath2, options.format));
   });
   
