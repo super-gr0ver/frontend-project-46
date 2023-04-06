@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { program } from "../node_modules/commander/esm.mjs";
-import * as fs from "fs";
+import fs from "fs";
 import _ from "lodash";
 // import genDiff from '../src/index.js';
 // const program = new Command();
@@ -14,23 +14,25 @@ program
     const objFile1 = JSON.parse(fs.readFileSync(filepath1, "utf8"));
     const objFile2 = JSON.parse(fs.readFileSync(filepath2, "utf8"));
     const keysObjFiles = _.sortBy(Object.keys({ ...objFile1, ...objFile2 }));
+    
+    const result = keysObjFiles.reduce((acc, key) => {
+      if (objFile1[key] === objFile2[key]) {
+        acc.push(`    ${key}: ${objFile1[key]}`);
+      } else if (_.has(objFile1, key) && _.has(objFile2, key)) {
+        acc.push(
+         `  - ${key}: ${objFile1[key]}\n  + ${key}: ${objFile2[key]}`
+       );
+      }
+      if (_.has(objFile1, key) && !_.has(objFile2, key)) {
+        acc.push(`  - ${key}: ${objFile1[key]}`);
+      }
+      if (!_.has(objFile1, key) && _.has(objFile2, key)) {
+        acc.push(`  + ${key}: ${objFile2[key]}`);
+      }
+      
+      return acc;
+    }, []);
 
-    const result = [];
-    for (const currentKey of keysObjFiles) {
-      if (objFile1[currentKey] === objFile2[currentKey]) {
-        result.push(`    ${currentKey}: ${objFile1[currentKey]}`);
-      } else if (_.has(objFile1, currentKey) && _.has(objFile2, currentKey)) {
-        result.push(
-          `  - ${currentKey}: ${objFile1[currentKey]}\n  + ${currentKey}: ${objFile2[currentKey]}`
-        );
-      }
-      if (_.has(objFile1, currentKey) && !_.has(objFile2, currentKey)) {
-        result.push(`  - ${currentKey}: ${objFile1[currentKey]}`);
-      }
-      if (!_.has(objFile1, currentKey) && _.has(objFile2, currentKey)) {
-        result.push(`  + ${currentKey}: ${objFile2[currentKey]}`);
-      }
-    }
     return console.log(`{\n${result.join("\n")}\n}`);
   });
 
