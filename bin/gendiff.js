@@ -2,9 +2,7 @@
 import { program } from "../node_modules/commander/esm.mjs";
 import * as fs from "fs";
 import _ from "lodash";
-
 // import genDiff from '../src/index.js';
-
 // const program = new Command();
 
 program
@@ -26,16 +24,14 @@ program
           `  - ${currentKey}: ${objFile1[currentKey]}\n  + ${currentKey}: ${objFile2[currentKey]}`
         );
       }
-
       if (_.has(objFile1, currentKey) && !_.has(objFile2, currentKey)) {
         result.push(`  - ${currentKey}: ${objFile1[currentKey]}`);
       }
-
       if (!_.has(objFile1, currentKey) && _.has(objFile2, currentKey)) {
         result.push(`  + ${currentKey}: ${objFile2[currentKey]}`);
       }
     }
-    return console.log(`{\n${result.join("\n")}\n}`)
+    return console.log(`{\n${result.join("\n")}\n}`);
   });
 
 program.parse(process.argv);
