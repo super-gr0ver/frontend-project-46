@@ -8,7 +8,7 @@ program
   .description('Compares two configuration files and shows a difference.')
   .arguments('<filepath1> <filepath2>')
   .option('-f, --format <type>', 'output format', 'stylish')
-  .action((filepath1, filepath2, options) => {
+  .action((filepath1, filepath2) => {
     const objFile1 = JSON.parse(fs.readFileSync(filepath1, 'utf8'));
     const objFile2 = JSON.parse(fs.readFileSync(filepath2, 'utf8'));
     const keysObjFiles = _.sortBy(Object.keys({ ...objFile1, ...objFile2 }));
