@@ -27,9 +27,9 @@ jobs:
         # Step's name
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
       - run: make install
       - run: make lint
       - run: make test
