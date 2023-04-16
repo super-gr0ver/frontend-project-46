@@ -10,8 +10,6 @@ env:
   CI: true
   CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
 
-name: hello-world
-on: push
 jobs:
   my-job:
     runs-on: ubuntu-latest
