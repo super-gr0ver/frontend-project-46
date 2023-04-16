@@ -13,6 +13,9 @@ env:
 jobs:
   Diff_file_check_CI:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/checkout@v3
