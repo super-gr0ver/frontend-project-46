@@ -16,7 +16,6 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-    - uses: actions/setup-node@v3
     - name: Use Node.js ${{ matrix.node-version }}
       run: make test
       env:
