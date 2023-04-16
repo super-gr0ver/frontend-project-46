@@ -17,6 +17,6 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/checkout@v3
       - run: npm install
-      - run: npm run lint
+      - run: npm lint
       - name: run tests
         run: npm test
