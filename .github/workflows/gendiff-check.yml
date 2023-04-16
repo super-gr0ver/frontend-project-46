@@ -15,17 +15,16 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x]
-
     steps:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: ../package-lock.json
-    - run: make install
-    - run: make lint
-    - run: make test
+        cache-dependency-path: '../package-lock.json'
+      run: make install
+      run: make lint
+      run: make test
     - name: Test & publish code coverage
       uses: paambaati/codeclimate-action@v3.2.0
       env:
