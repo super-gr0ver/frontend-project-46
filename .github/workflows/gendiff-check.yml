@@ -12,7 +12,11 @@ env:
 
 jobs:
   my-job:
-    runs-on: ubuntu-latest
+    DiffFile-Check: ubuntu-latest
     steps:
-      - name: my-step
+      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+      - run: npm install
+      - run: npm run lint
+      - name: run tests
         run: npm test
