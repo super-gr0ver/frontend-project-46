@@ -18,8 +18,4 @@ jobs:
     steps:
     - name: Use Node.js ${{ matrix.node-version }}
       run: make test
-      env:
-        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-      with:
-        coverageCommand: make test-coverage
-        debug: true 
+      
