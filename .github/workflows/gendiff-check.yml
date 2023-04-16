@@ -18,7 +18,7 @@ jobs:
         node-version: [18.x]
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
       - run: npm install
       - run: make lint
       - name: Run tests
