@@ -11,12 +11,14 @@ env:
   CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
 
 jobs:
-  DiffFile-Check:
+  Diff file check CI:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/checkout@v3
       - run: npm install
       - run: make lint
-      - name: run tests
+      - name: Run tests
         run: make test
+      - name: Run tests coverage
+        run: make test-coverage
