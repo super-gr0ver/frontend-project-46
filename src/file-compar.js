@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 const genDiffTree = (filepath1, filepath2) => {
-  const keyConcat = Object.keys({ ...filepath1, ...filepath2 })
+  const keyConcat = Object.keys({ ...filepath1, ...filepath2 });
   const keysObjFiles = _.sortBy(keyConcat);
 
   const result = keysObjFiles.reduce((acc, key) => {
