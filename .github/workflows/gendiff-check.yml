@@ -9,6 +9,7 @@ on:
 env:
   CI: true
   CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+  DEBUG: true 
 
 jobs:
   Diff_file_check_CI:
@@ -25,4 +26,3 @@ jobs:
         run: make test
       - name: Run tests coverage
         run: make test-coverage
-        debug: true 
