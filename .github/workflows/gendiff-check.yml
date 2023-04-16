@@ -8,14 +8,13 @@ on:
 
 env:
   CI: true
+  CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
 
+name: hello-world
+on: push
 jobs:
-  testing:
+  my-job:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
     steps:
-    - name: Use Node.js ${{ matrix.node-version }}
-      run: make test
-      
+      - name: my-step
+        run: echo "Hello World!"
