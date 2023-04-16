@@ -11,7 +11,7 @@ env:
   CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
 
 jobs:
-  Diff file check CI:
+  Diff_file_check_CI:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
