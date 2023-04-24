@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
-import genDiffTree from './file-compar.js';
+import genDiffTree from './tree-compar.js';
 
-const getFilePath = (filepath) => path.resolve(process.cwd(), filepath);
-const readFile = (filepath) => JSON.parse(fs.readFileSync(filepath, 'utf8'));
+const getFilePath = (fileName) => path.resolve(process.cwd(), fileName);
+const readFile = (filePath) => JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
 const genDiff = (file1, file2) => {
   const file1Path = getFilePath(file1);
