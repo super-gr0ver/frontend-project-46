@@ -6,3 +6,7 @@
 
 ### Codeclimate status:
 [![Maintainability](https://api.codeclimate.com/v1/badges/cd817f57a2d8f740a631/maintainability)](https://codeclimate.com/github/super-gr0ver/frontend-project-46/maintainability)
+
+### Package work examples:
+* json files difference
+[![asciicast](https://asciinema.org/a/5B9sBQYLBcKf2rHU4D9bZv4Qy.svg)](https://asciinema.org/a/5B9sBQYLBcKf2rHU4D9bZv4Qy)
