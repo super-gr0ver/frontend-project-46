@@ -3,10 +3,9 @@ import path from 'path';
 
 import format from './parsers.js';
 import genDiffTree from './tree-compar.js';
-
+import yaml from "js-yaml";
 
 const getFilePath = (fileName) => path.resolve(process.cwd(), fileName);
-
 const readFile = (filePath) => fs.readFileSync(getFilePath(filePath), 'utf8');
 
 const genDiff = (file1, file2, formatName = 'stylish') => {
@@ -18,7 +17,7 @@ const genDiff = (file1, file2, formatName = 'stylish') => {
   
   const getTree = genDiffTree(dataFile1, dataFile2);
   console.log(getTree)
-
+  
   return format(getTree, formatName);
 };
 
