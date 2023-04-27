@@ -1,10 +1,10 @@
-import yaml from "js-yaml";
-// import stylish from './stylish.js';
+import yaml from 'js-yaml';
+import stylish from './stylish.js';
 
 const parseObj = (data, format) => {
   switch (format) {
-    // case 'stylish':
-    //   return stylish(data);
+    case 'stylish':
+      return stylish(data);
     case "json":
       return JSON.stringify(data, null);
     // case 'plain':
