@@ -1,19 +1,25 @@
 import fs from 'fs';
 import path from 'path';
+
+import format from './parsers.js';
 import genDiffTree from './tree-compar.js';
-import parseObj from './parsers.js';
+
 
 const getFilePath = (fileName) => path.resolve(process.cwd(), fileName);
+
 const readFile = (filePath) => fs.readFileSync(getFilePath(filePath), 'utf8');
 
-const genDiff = (file1, file2) => {
-  const file1Data = readFile(file1);
-  const parseObj1 = parseObj(file1Data, path.extname(file1));
+const genDiff = (file1, file2, formatName = 'stylish') => {
+  const getFileData1 = readFile(file1);
+  const dataFile1 = format(getFileData1, path.extname(file1));
+  
+  const getFileData2 = readFile(file2);
+  const dataFile2 = format(getFileData2, path.extname(file2));
+  
+  const getTree = genDiffTree(dataFile1, dataFile2);
+  console.log(getTree)
 
-  const file2Data = readFile(file2);
-  const parseObj2 = parseObj(file2Data, path.extname(file2));
-
-  return genDiffTree(parseObj1, parseObj2);
+  return format(getTree, formatName);
 };
 
 export default genDiff;
