@@ -13,5 +13,5 @@ test('Check difference between JSON files', () => {
   const file1Path = getFilePath('file1.json');
   const file2Path = getFilePath('file2.json');
   const stylishDif = readFile('stylish.txt');
-  expect(genDiff(file1Path, file2Path, stylish)).toEqual(stylishDif);
+  expect(genDiff(file1Path, file2Path, 'stylish')).toEqual(stylishDif);
 });
