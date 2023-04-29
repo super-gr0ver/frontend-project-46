@@ -9,10 +9,9 @@ const __dirname = path.dirname(__filename);
 const getFilePath = (fileName) => path.join(__dirname, '..', '__fixtures__', fileName);
 const readFile = (fileName) => fs.readFileSync(getFilePath(fileName), 'utf8');
 
-test('Check difference between files', () => {
+test('Check difference between JSON files', () => {
   const file1Path = getFilePath('file1.json');
   const file2Path = getFilePath('file2.json');
-  const getDif = readFile('diffile.txt');
-
-  expect(genDiff(file1Path, file2Path)).toEqual(getDif);
+  const stylishDif = readFile('stylish.txt');
+  expect(genDiff(file1Path, file2Path, stylish)).toEqual(stylishDif);
 });
