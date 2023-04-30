@@ -27,7 +27,7 @@ const iter = (diffTree, depth) => {
       case 'unchanged':
         return `  ${currentIndent}${node.name}: ${nodeChilds(node.value, depth)}`;
       case 'nested':
-        return `! ${node.name}: ${iter(node.value, depth)}`;
+        return `${node.name}: ${iter(node.value, depth)}`;
     }
   });
   return `{\n${valueObj.join('\n')}\n}`;
