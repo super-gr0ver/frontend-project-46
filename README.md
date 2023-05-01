@@ -29,3 +29,6 @@ gendiff -h
 ### Package work examples:
 * json files difference
 [![asciicast](https://asciinema.org/a/5B9sBQYLBcKf2rHU4D9bZv4Qy.svg)](https://asciinema.org/a/5B9sBQYLBcKf2rHU4D9bZv4Qy)
+
+* nested json files difference
+[![asciicast](https://asciinema.org/a/Z9y1amScuUNIucanxcEHGIMgG.svg)](https://asciinema.org/a/Z9y1amScuUNIucanxcEHGIMgG)˝
