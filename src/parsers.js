@@ -1,5 +1,6 @@
 import yaml from 'js-yaml';
 import stylish from './stylish.js';
+import plain from './plain.js';
 
 const parseObj = (data, format) => {
   switch (format) {
@@ -7,8 +8,8 @@ const parseObj = (data, format) => {
       return stylish(data);
     case 'json':
       return JSON.stringify(data, null);
-    // case 'plain':
-    //   return plain(data);
+    case 'plain':
+      return plain(data);
 
     case '.json':
       return JSON.parse(data);
@@ -16,7 +17,7 @@ const parseObj = (data, format) => {
     case '.yaml':
       return yaml.load(data);
     default:
-    // throw new Error(`${format} is not supported`);
+      throw new Error(`${format} is not supported`);
   }
 };
 

@@ -21,36 +21,25 @@ const nodeChilds = (node, depth) => {
   if (!_.isPlainObject(node)) {
     return `${node}`;
   }
-  const result = Object.entries(node).map(
-    ([key, value]) =>
-      `${nestedIndent(depth + 1)}${key}: ${nodeChilds(value, depth + 1)}`
-  );
+  const result = Object.entries(node).map(([key, value]) => `${nestedIndent(depth + 1)}${key}: ${nodeChilds(value, depth + 1)}`);
   return `{\n${result.join('\n')}\n${nestedIndent(depth)}}`;
 };
-
 
 const iter = (diffTree, depth) => {
   const valueObj = Object.values(diffTree).map((node) => {
     switch (node.status) {
       case 'deleted':
-        return `${indent(depth)}- ${node.name}: ${nodeChilds(
-          node.value,
-          depth
-        )}`;
+        return `${indent(depth)}- ${node.name}: ${nodeChilds(node.value, depth)}`;
       case 'added':
         return `${indent(depth)}+ ${node.name}: ${nodeChilds(node.value, depth)}`;
       case 'changed':
-        return `${indent(depth)}- ${node.name}: ${nodeChilds(node.oldValue, depth
-        )}\n${indent(depth)}+ ${node.name}: ${nodeChilds(node.newValue, depth)}`;
+        return `${indent(depth)}- ${node.name}: ${nodeChilds(node.oldValue, depth)}\n${indent(depth)}+ ${node.name}: ${nodeChilds(node.newValue, depth)}`;
       case 'unchanged':
         return `${nestedIndent(depth)}${node.name}: ${nodeChilds(node.value, depth)}`;
       case 'nested':
         return `${nestedIndent(depth)}${node.name}: ${iter(node.childrens, depth + 1)}`;
-      
-      // case 'nested':
-      //   const lines = iter(node.children, depth + 1);
-      //   return `${getFourOrEightSpaces(depth)}${node.key}: {\n${lines.join('\n',)}\n${getFourOrEightSpaces(depth)}}`;
-
+      default:
+        throw new Error(`Unknown type of node ${node.type}!`);
     }
   });
   return `{\n${valueObj.join('\n')}\n${bracketsIndent(depth)}}`;
