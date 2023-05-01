@@ -3,7 +3,7 @@ import _ from 'lodash';
 const replacer = ' ';
 const spaceCount = 4;
 
-const currentIndent = (depth) => {
+const nestedIndent = (depth) => {
   const replacerCount = depth * spaceCount;
   return replacer.repeat(replacerCount);
 };
@@ -19,9 +19,9 @@ const nodeChilds = (node, depth) => {
   }
   const result = Object.entries(node).map(
     ([key, value]) =>
-      `${currentIndent(depth + 1)}${key}: ${nodeChilds(value, depth + 1)}`
+      `${nestedIndent(depth + 1)}${key}: ${nodeChilds(value, depth + 1)}`
   );
-  return `{\n${result.join('\n')}\n${currentIndent(depth)}}`;
+  return `{\n${result.join('\n')}\n${nestedIndent(depth)}}`;
 };
 
 
@@ -39,9 +39,14 @@ const iter = (diffTree, depth) => {
         return `${indent(depth)}- ${node.name}: ${nodeChilds(node.oldValue,depth
         )}\n${indent(depth)}+ ${node.name}: ${nodeChilds(node.newValue,depth)}`;
       case 'unchanged':
-        return `${currentIndent(depth)}${node.name}: ${nodeChilds(node.value,depth)}`;
+        return `${nestedIndent(depth)}${node.name}: ${nodeChilds(node.value,depth)}`;
       case 'nested':
-        return `${currentIndent(depth)}${node.name}: ${iter(node.value, depth)}`;
+        return `${nestedIndent(depth)}${node.name}: ${iter(node.childrens, depth + 1)}`;
+      
+      // case 'nested':
+      //   const lines = iter(node.children, depth + 1);
+      //   return `${getFourOrEightSpaces(depth)}${node.key}: {\n${lines.join('\n',)}\n${getFourOrEightSpaces(depth)}}`;
+      
     }
   });
   return `{\n${valueObj.join('\n')}\n}`;
