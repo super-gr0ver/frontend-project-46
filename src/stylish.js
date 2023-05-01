@@ -12,6 +12,10 @@ const indent = (depth) => {
   return replacer.repeat(replacerCount - 2);
 };
 
+const bracketsIndent = (depth) => {
+  const replacerCount = depth * spaceCount;
+  return replacer.repeat(replacerCount - spaceCount);
+};
 
 const nodeChilds = (node, depth) => {
   if (!_.isPlainObject(node)) {
@@ -34,22 +38,22 @@ const iter = (diffTree, depth) => {
           depth
         )}`;
       case 'added':
-        return `${indent(depth)}+ ${node.name}: ${nodeChilds(node.value,depth)}`;
+        return `${indent(depth)}+ ${node.name}: ${nodeChilds(node.value, depth)}`;
       case 'changed':
-        return `${indent(depth)}- ${node.name}: ${nodeChilds(node.oldValue,depth
-        )}\n${indent(depth)}+ ${node.name}: ${nodeChilds(node.newValue,depth)}`;
+        return `${indent(depth)}- ${node.name}: ${nodeChilds(node.oldValue, depth
+        )}\n${indent(depth)}+ ${node.name}: ${nodeChilds(node.newValue, depth)}`;
       case 'unchanged':
-        return `${nestedIndent(depth)}${node.name}: ${nodeChilds(node.value,depth)}`;
+        return `${nestedIndent(depth)}${node.name}: ${nodeChilds(node.value, depth)}`;
       case 'nested':
         return `${nestedIndent(depth)}${node.name}: ${iter(node.childrens, depth + 1)}`;
       
       // case 'nested':
       //   const lines = iter(node.children, depth + 1);
       //   return `${getFourOrEightSpaces(depth)}${node.key}: {\n${lines.join('\n',)}\n${getFourOrEightSpaces(depth)}}`;
-      
+
     }
   });
-  return `{\n${valueObj.join('\n')}\n}`;
+  return `{\n${valueObj.join('\n')}\n${bracketsIndent(depth)}}`;
 };
 
 const stylish = (diffTree) => iter(diffTree, 1);
