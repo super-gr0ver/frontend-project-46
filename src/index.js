@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import format from './parsers.js';
+import format from '../src/formatters/index.js';
 import genDiffTree from './tree-compar.js';
 
 const getFilePath = (fileName) => path.resolve(process.cwd(), fileName);

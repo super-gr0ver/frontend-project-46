@@ -32,7 +32,7 @@ const iter = (diffTree, depth) => {
         return `${indent(depth)}- ${node.name}: ${nodeChilds(node.value, depth)}`;
       case 'added':
         return `${indent(depth)}+ ${node.name}: ${nodeChilds(node.value, depth)}`;
-      case 'changed':
+      case 'updated':
         return `${indent(depth)}- ${node.name}: ${nodeChilds(node.oldValue, depth)}\n${indent(depth)}+ ${node.name}: ${nodeChilds(node.newValue, depth)}`;
       case 'unchanged':
         return `${nestedIndent(depth)}${node.name}: ${nodeChilds(node.value, depth)}`;
