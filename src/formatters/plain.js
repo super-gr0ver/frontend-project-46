@@ -1,22 +1,33 @@
 import _ from 'lodash';
 
-const value = (currentValue) => (_.isPlainObject(currentValue)) ? `[complex value]` : currentValue;
-
-const plain = (tree, parent) => tree.flatMap((item) => {
-  switch (item.status) {
-    case 'added':
-      return `Property ${parent}.${item.name} was ${item.status} with value: ${value(item.value)}` ;
-    case 'deleted':
-      return `Property ${parent}.${item.name} was removed`
-    case 'updated':
-        return `Property ${parent}.${item.name} was ${item.status}. From ${value(item.oldValue)} to ${value(item.newValue)}`
-    case 'nested':
-      return `${plain(item.childrens, item.name).join('\n')}`;
-      return `${iter(node.children, [[...parent, node.key].join('.')]).join('\n')}`;
-  
-    default:
-      console.log('error')
+const composValue = (currentValue) => {
+  if (!_.isPlainObject(currentValue)) {
+    return (typeof (currentValue) === 'string') ? `'${currentValue}'` : currentValue;
   }
-});
+  return '[complex value]';
+};
+
+const plain = (tree) => {
+  const iter = (node, ancestry = []) => {
+    const nestedPath = [...ancestry, node.name];
+    const path = nestedPath.join('.');
+
+    switch (node.status) {
+      case 'added':
+        return `Property '${path}' was added with value: ${composValue(node.value)}`;
+      case 'deleted':
+        return `Property '${path}' was removed`;
+      case 'updated':
+        return `Property '${path}' was updated. From ${composValue(node.oldValue)} to ${composValue(node.newValue)}`;
+      case 'nested':
+        return node.childrens.filter((item) => item.status !== 'unchanged')
+          .flatMap((item) => iter(item, nestedPath));
+      default:
+        throw new Error(`Unknown status: ${node.status}`);
+    }
+  };
+  const result = tree.flatMap((node) => iter(node)).join('\n');
+  return result;
+};
 
 export default plain;

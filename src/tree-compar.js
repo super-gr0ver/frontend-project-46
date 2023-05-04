@@ -12,7 +12,7 @@ const genDiffTree = (file1Date, file2Date) => {
     }
     if (_.isPlainObject(file1Date[key]) && _.isPlainObject(file2Date[key])) {
       return {
-        name: key, value: genDiffTree(file1Date[key], file2Date[key]), childrens: genDiffTree(file1Date[key], file2Date[key]), status: 'nested'
+        name: key, value: genDiffTree(file1Date[key], file2Date[key]), childrens: genDiffTree(file1Date[key], file2Date[key]), status: 'nested',
       };
     }
     if (file1Date[key] !== file2Date[key]) {

@@ -15,3 +15,17 @@ test('Check difference between JSON files with nested', () => {
   const stylishDif = readFile('stylish.txt');
   expect(genDiff(file1Path, file2Path, 'stylish')).toEqual(stylishDif);
 });
+
+test('Check difference between JSON files with plain', () => {
+  const file1Path = getFilePath('file1.json');
+  const file2Path = getFilePath('file2.json');
+  const stylishDif = readFile('plain.txt');
+  expect(genDiff(file1Path, file2Path, 'plain')).toEqual(stylishDif);
+});
+
+test('Check difference between YAML files with plain', () => {
+  const file1Path = getFilePath('file1.yaml');
+  const file2Path = getFilePath('file2.yaml');
+  const stylishDif = readFile('plain.txt');
+  expect(genDiff(file1Path, file2Path, 'plain')).toEqual(stylishDif);
+});
