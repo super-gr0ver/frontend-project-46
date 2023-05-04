@@ -33,5 +33,8 @@ gendiff -h
 * nested json files difference
 [![asciicast](https://asciinema.org/a/Z9y1amScuUNIucanxcEHGIMgG.svg)](https://asciinema.org/a/Z9y1amScuUNIucanxcEHGIMgG)˝
 
-json/yaml plain files difference
+* json/yaml plain files difference
 [![asciicast](https://asciinema.org/a/JdpqvR9TUEWEGsZO99f5WUit9.svg)](https://asciinema.org/a/JdpqvR9TUEWEGsZO99f5WUit9)
+
+* json/yaml JSON files difference
+[![asciicast](https://asciinema.org/a/7FdMvyEq0hElGx6207rd8c05M.svg)](https://asciinema.org/a/7FdMvyEq0hElGx6207rd8c05M)
