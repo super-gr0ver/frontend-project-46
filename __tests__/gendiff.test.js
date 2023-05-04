@@ -29,3 +29,10 @@ test('Check difference between YAML files with plain', () => {
   const stylishDif = readFile('plain.txt');
   expect(genDiff(file1Path, file2Path, 'plain')).toEqual(stylishDif);
 });
+
+test('Check difference between JSON files with json', () => {
+  const file1Path = getFilePath('file1.json');
+  const file2Path = getFilePath('file2.json');
+  const stylishDif = readFile('json.txt');
+  expect(genDiff(file1Path, file2Path, 'json')).toEqual(stylishDif);
+});
