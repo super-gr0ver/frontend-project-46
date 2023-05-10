@@ -27,7 +27,7 @@ git@github.com:super-gr0ver/frontend-project-46.git
 ```
 cd frontend-project-46
 ```
-3. Install npm packaje using the command:
+3. Install npm package using the command:
 ```
 npm install
 ```

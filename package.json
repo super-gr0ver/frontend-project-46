@@ -5,7 +5,7 @@
     "gendiff": "bin/gendiff.js"
   },
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/super-gr0ver/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/super-gr0ver/frontend-project-46/actions)",
+  "description": "\"Difference Calculator\" Difference calculator is a program that perceives the difference between two data structures.",
   "main": "index.js",
   "scripts": {
     "test": "npx jest"
