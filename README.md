@@ -10,8 +10,8 @@
 
 Difference calculator is a program that perceives the difference between two data structures. Utility features:
 
-* Support for different input formats: **yaml**, json
-* Report generation in the form of plain text, stylish and json
+* Support for different input formats: ```yaml```, ```json```
+* Report generation in the form of ```plain text```, ```stylish``` and ```json```
 
 
 ## Minimum system Requirements
