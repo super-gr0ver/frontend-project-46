@@ -39,7 +39,7 @@ const iter = (diffTree, depth) => {
       case 'nested':
         return `${nestedIndent(depth)}${node.name}: ${iter(node.childrens, depth + 1)}`;
       default:
-        throw new Error(`Unknown type of node ${node.type}!`);
+        throw new Error(`Unknown type of node ${node.status}!`);
     }
   });
   return `{\n${valueObj.join('\n')}\n${bracketsIndent(depth)}}`;
