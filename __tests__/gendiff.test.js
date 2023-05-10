@@ -9,6 +9,19 @@ const __dirname = path.dirname(__filename);
 const getFilePath = (fileName) => path.join(__dirname, '..', '__fixtures__', fileName);
 const readFile = (fileName) => fs.readFileSync(getFilePath(fileName), 'utf8');
 
+const stylishDif = readFile('stylish.txt');
+const plainDif = readFile('plain.txt');
+const jsonDif = readFile('json.txt');
+const extensions = ['yaml', 'yml', 'json']
+
+// test.each(extensions, )
+
+// test('Check difference between files with nested', () => {
+//   const file1Path = getFilePath(file1.${ext}); 
+//   const file2Path = getFilePath(file2.${ext});
+//   expect(genDiff(file1Path, file2Path, 'stylish')).toEqual(stylishDif);
+// };
+
 test('Check difference between JSON files with nested', () => {
   const file1Path = getFilePath('file1.json');
   const file2Path = getFilePath('file2.json');

@@ -46,6 +46,5 @@ const iter = (diffTree, depth) => {
 };
 
 const stylish = (diffTree) => iter(diffTree, 1);
-// const stylish = (diffTree) => diffTree;
 
 export default stylish;
