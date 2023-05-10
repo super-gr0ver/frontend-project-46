@@ -8,17 +8,34 @@
 
 # Description
 
-Difference calculator is a program that perceives the difference between two data structures.
+Difference calculator is a program that perceives the difference between two data structures. Utility features:
 
-## Minimum Requirements
+* Support for different input formats: **yaml**, json
+* Report generation in the form of plain text, stylish and json
+
+
+## Minimum system Requirements
 
 Make sure you have **Node.js** version 13 or higher installed.
 
-## Setup
-
-```bash
-make install 
+## Install project:
+1. Clone repository using the command:
 ```
+git@github.com:super-gr0ver/frontend-project-46.git
+```
+2. Enter to project directory:
+```
+cd frontend-project-46
+```
+3. Install npm packaje using the command:
+```
+npm install
+```
+4. To install a package from the operating system using the command: 
+```
+npm link 
+```
+The command must be run from the root directory of the project
 
 ## Display help information on utility
 
