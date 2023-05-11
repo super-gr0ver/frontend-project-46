@@ -12,40 +12,13 @@ const readFile = (fileName) => fs.readFileSync(getFilePath(fileName), 'utf8');
 const stylishDif = readFile('stylish.txt');
 const plainDif = readFile('plain.txt');
 const jsonDif = readFile('json.txt');
-const extensions = ['yaml', 'yml', 'json']
+const extensions = ['yaml', 'json'];
 
-// test.each(extensions, )
-
-// test('Check difference between files with nested', () => {
-//   const file1Path = getFilePath(file1.${ext}); 
-//   const file2Path = getFilePath(file2.${ext});
-//   expect(genDiff(file1Path, file2Path, 'stylish')).toEqual(stylishDif);
-// };
-
-test('Check difference between JSON files with nested', () => {
-  const file1Path = getFilePath('file1.json');
-  const file2Path = getFilePath('file2.json');
-  const stylishDif = readFile('stylish.txt');
+test.each(extensions)('!!!', (ext) => {
+  const file1Path = getFilePath(`file1.${ext}`);
+  const file2Path = getFilePath(`file2.${ext}`);
   expect(genDiff(file1Path, file2Path, 'stylish')).toEqual(stylishDif);
-});
-
-test('Check difference between JSON files with plain', () => {
-  const file1Path = getFilePath('file1.json');
-  const file2Path = getFilePath('file2.json');
-  const stylishDif = readFile('plain.txt');
-  expect(genDiff(file1Path, file2Path, 'plain')).toEqual(stylishDif);
-});
-
-test('Check difference between YAML files with plain', () => {
-  const file1Path = getFilePath('file1.yaml');
-  const file2Path = getFilePath('file2.yaml');
-  const stylishDif = readFile('plain.txt');
-  expect(genDiff(file1Path, file2Path, 'plain')).toEqual(stylishDif);
-});
-
-test('Check difference between JSON files with json', () => {
-  const file1Path = getFilePath('file1.json');
-  const file2Path = getFilePath('file2.json');
-  const stylishDif = readFile('json.txt');
-  expect(genDiff(file1Path, file2Path, 'json')).toEqual(stylishDif);
+  expect(genDiff(file1Path, file2Path, 'plain')).toEqual(plainDif);
+  expect(genDiff(file1Path, file2Path, 'plain')).toEqual(plainDif);
+  expect(genDiff(file1Path, file2Path, 'json')).toEqual(jsonDif);
 });
