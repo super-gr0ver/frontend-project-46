@@ -14,11 +14,11 @@ const plainDif = readFile('plain.txt');
 const jsonDif = readFile('json.txt');
 const extensions = ['yaml', 'json'];
 
-test.each(extensions)('Check difference between files', (ext) => {
+test.each(extensions)(`Check difference between ${extensions} files`, (ext) => {
   const file1Path = getFilePath(`file1.${ext}`);
   const file2Path = getFilePath(`file2.${ext}`);
+  expect(genDiff(file1Path, file2Path)).toEqual(stylishDif);
   expect(genDiff(file1Path, file2Path, 'stylish')).toEqual(stylishDif);
-  expect(genDiff(file1Path, file2Path, 'plain')).toEqual(plainDif);
   expect(genDiff(file1Path, file2Path, 'plain')).toEqual(plainDif);
   expect(genDiff(file1Path, file2Path, 'json')).toEqual(jsonDif);
 });
