@@ -11,7 +11,7 @@ const dataFormat = (data, format) => {
     case 'json':
       return JSON.stringify(data, null);
     case 'yml':
-      return yaml.load(data);
+      return stylish(data);
     default:
       throw new Error(`${format} is not supported`);
   }
