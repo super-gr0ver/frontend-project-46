@@ -12,7 +12,8 @@ const dataFormat = (data, format) => {
     case 'yml':
       return stylish(data);
     default:
-      throw new Error(`${format} is not supported`);
+      `!!!`
+      // throw new Error(`${format} is not supported`);
   }
 };
 

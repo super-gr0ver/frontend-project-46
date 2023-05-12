@@ -20,5 +20,5 @@ test.each(extensions)(`Check difference between ${extensions} files`, (ext) => {
   expect(genDiff(file1Path, file2Path)).toEqual(stylishDif);
   expect(genDiff(file1Path, file2Path, 'stylish')).toEqual(stylishDif);
   expect(genDiff(file1Path, file2Path, 'plain')).toEqual(plainDif);
-  expect(genDiff(file1Path, file2Path, 'json')).toBe(jsonDif);
+  expect(genDiff(file1Path, file2Path, 'json')).toEqual(jsonDif);
 });

@@ -9,7 +9,8 @@ const dataParse = (data, format) => {
     case '.yaml':
       return yaml.load(data);
     default:
-      throw new Error(`${format} is not supported`);
+      `###`
+      // throw new Error(`${format} is not supported`);
   }
 };
 
