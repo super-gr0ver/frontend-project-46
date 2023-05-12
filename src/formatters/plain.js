@@ -23,7 +23,7 @@ const plain = (tree) => {
         return node.childrens.filter((item) => item.status !== 'unchanged')
           .flatMap((item) => iter(item, nestedPath));
       case 'unchanged':
-        return null
+        return null;
       default:
         throw new Error(`Unknown status: ${node.status}`);
     }

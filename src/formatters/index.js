@@ -1,6 +1,6 @@
+import yaml from 'js-yaml';
 import stylish from './stylish.js';
 import plain from './plain.js';
-import yaml from 'js-yaml';
 
 const dataFormat = (data, format) => {
   switch (format) {
