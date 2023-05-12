@@ -1,5 +1,6 @@
 import stylish from './stylish.js';
 import plain from './plain.js';
+import yaml from 'js-yaml';
 
 const dataFormat = (data, format) => {
   switch (format) {
@@ -9,8 +10,8 @@ const dataFormat = (data, format) => {
       return plain(data);
     case 'json':
       return JSON.stringify(data, null);
-      case 'yml':
-        return yaml.load(data);
+    case 'yml':
+      return yaml.load(data);
     default:
       throw new Error(`${format} is not supported`);
   }
