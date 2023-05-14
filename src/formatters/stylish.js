@@ -36,10 +36,8 @@ const iter = (diffTree, depth) => {
         return `${indent(depth)}- ${node.name}: ${nodeChilds(node.oldValue, depth)}\n${indent(depth)}+ ${node.name}: ${nodeChilds(node.newValue, depth)}`;
       case 'unchanged':
         return `${nestedIndent(depth)}${node.name}: ${nodeChilds(node.value, depth)}`;
-      case 'nested':
-        return `${nestedIndent(depth)}${node.name}: ${iter(node.childrens, depth + 1)}`;
       default:
-        // throw new Error(`Unknown type of node ${node.status}!`);
+        return `${nestedIndent(depth)}${node.name}: ${iter(node.childrens, depth + 1)}`;
     }
   });
   return `{\n${valueObj.join('\n')}\n${bracketsIndent(depth)}}`;

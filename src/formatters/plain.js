@@ -25,7 +25,7 @@ const plain = (tree) => {
         return node.childrens.flatMap((item) => iter(item, nestedPath));
     }
   };
-  const result = tree.flatMap((node) => iter(node,[])).join('\n');
+  const result = tree.flatMap((node) => iter(node, [])).join('\n');
   return result;
 };
 
