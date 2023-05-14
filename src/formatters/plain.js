@@ -8,7 +8,7 @@ const composValue = (currentValue) => {
 };
 
 const plain = (tree) => {
-  const iter = (node, ancestry = []) => {
+  const iter = (node, ancestry) => {
     const nestedPath = [...ancestry, node.name];
     const path = nestedPath.join('.');
 
@@ -19,14 +19,13 @@ const plain = (tree) => {
         return `Property '${path}' was removed`;
       case 'updated':
         return `Property '${path}' was updated. From ${composValue(node.oldValue)} to ${composValue(node.newValue)}`;
-      case 'nested':
-        return node.childrens.filter((item) => item.status !== 'unchanged')
-          .flatMap((item) => iter(item, nestedPath));
+      case 'unchanged':
+        return [];
       default:
-        // throw new Error(`Unknown status: ${node.status}`);
+        return node.childrens.flatMap((item) => iter(item, nestedPath));
     }
   };
-  const result = tree.flatMap((node) => iter(node)).join('\n');
+  const result = tree.flatMap((node) => iter(node,[])).join('\n');
   return result;
 };
 

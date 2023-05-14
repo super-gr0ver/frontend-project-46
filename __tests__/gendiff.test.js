@@ -12,7 +12,7 @@ const readFile = (fileName) => fs.readFileSync(getFilePath(fileName), 'utf8');
 const stylishDif = readFile('stylish.txt');
 const plainDif = readFile('plain.txt');
 const jsonDif = readFile('json.txt');
-const extensions = ['yaml', 'json'];
+const extensions = ['yml', 'json'];
 
 test.each(extensions)(`Check difference between ${extensions} files`, (ext) => {
   const file1Path = getFilePath(`file1.${ext}`);
