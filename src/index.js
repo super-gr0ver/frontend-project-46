@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 import format from './formatters/index.js';
-import parse from '../parse.js';
+import parse from './parse.js';
 import genDiffTree from './gendifftree.js';
 
 const getFilePath = (fileName) => path.resolve(process.cwd(), fileName);
